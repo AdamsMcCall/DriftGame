@@ -1,0 +1,62 @@
+<!doctype html> 
+<html lang="fr"> 
+<head> 
+	<meta charset="UTF-8" />
+	<title>Drift</title>
+	<script type="text/javascript" src="js/phaser.js"></script>
+    <style type="text/css">
+        body
+        {
+            text-align: center;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+
+<script type="text/javascript" style="text-align: center;">
+
+    var game = new Phaser.Game(450, 800, Phaser.AUTO, '', { preload: preload, create: create, update: update, render: render });
+
+    function preload()
+    {
+        game.load.image('car', 'assets/car.png');
+        game.load.image('road', 'assets/road.png');
+    }
+    
+    var car;
+    var road;
+    var keys;
+    var direction;
+
+    function create()
+    {
+        road = game.add.sprite(600, 400, 'road');
+        road.anchor.setTo(0.5, 0.5);
+        car = game.add.sprite(200, 400, 'car');
+        car.anchor.setTo(0.5, 0.5);
+        car.angle = -45;
+        keys = game.input.keyboard.createCursorKeys();
+        direction = car.angle + 45;
+    }
+
+    function update()
+    {
+        road.angle -= 4;
+        if (keys.left.isDown)
+            car.angle -= 1;
+        if (keys.right.isDown)
+            car.angle += 1;
+        direction = car.angle + 45;
+        car.x += direction / 2;
+    }
+    
+    function render()
+    {
+        //game.debug.spriteInfo(car, 32, 32);
+    }
+
+</script>
+
+</body>
+</html>
