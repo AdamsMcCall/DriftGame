@@ -1,2 +1,2 @@
 # DriftGame
-A quick runnergame about drifting in javascript.
+A quick runnergame about drifting in javascript using Phaser.
